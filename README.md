@@ -1,6 +1,5 @@
 #SOGE README
-Last updated March 12, 2013
-__author__= "Noble Ackerson"
+__author__= Noble Ackerson
 
 Fonts = Impact, Roboto (assuming thats what Glass Marketing is using)
 Assets = SOGE Couple with glass monocle's drawn in Fireworks, SOGE Etiquette Cards
