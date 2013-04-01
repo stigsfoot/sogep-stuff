@@ -1,33 +1,47 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Simple message app</title>
-</head>
- 
-<body>
-<div id="input_div">
-  <form action="/" method="post" enctype="multipart/form-data" name="message_form" id="message_form">
-    <div id="message_input_div">
-      <label for="form_text">Please enter your message</label>
-      <br />
-      <textarea name="form_text" id="form_text" cols="45" rows="5"></textarea>
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+      #sogeCanvas {
+        border: 1px solid #9C9898;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <input type="text" id="tips" value="" />
+      <button id="entertext">Enter</button>
     </div>
-    <div id="image_input_div">
-      <label for="form_image">Please select image</label>
-      <br />
-      <input type="file" name="form_image" id="form_image" />
+    <div>
+      <canvas id="sogeCanvas" width="640" height="360"></canvas>
     </div>
-    <input type="submit" name="submit" id="submit" value="Submit" />
-  </form>
-</div>
- 
-<div id="message_div">
-  {% for message in messages %}
-    <hr />
-    <p>{{ message.text }} </p>
-    <p><img src="img?entity_id={{ message.key }}" /></p>
-  {% endfor %}
-</div>
-</body>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+      var canvas = document.getElementById('sogeCanvas');
+      var context = canvas.getContext('2d');
+      var x = 334;
+      var y = 120;
+      var imageObj = new Image();
+
+      context.font = "28px sans-serif";
+      context.fillStyle = "white";
+      $('#entertext').click(function(){
+          context.fillText($("#tips").val(), x, y);
+      });
+
+      imageObj.onload = function() {
+        context.drawImage(imageObj, 0, 0);
+      };
+      imageObj.src = 'http://social.nobleackerson.com//sandbox/soge-etiquette-card.png';
+      context.font = "21 san-serif";
+      context.fillStyle = "white";
+
+
+    </script>
+
+  </body>
 </html>
